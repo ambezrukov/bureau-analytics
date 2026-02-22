@@ -7,6 +7,7 @@ import sqlite3
 import pandas as pd
 import pathlib
 import os
+from typing import List, Optional
 import streamlit as st
 
 
@@ -80,7 +81,7 @@ def load_exchange_rates() -> pd.DataFrame:
 
 
 @st.cache_data(ttl=3600)
-def get_periods() -> list[str]:
+def get_periods() -> List[str]:
     """Возвращает список всех периодов в хронологическом порядке."""
     conn = get_connection()
     rows = conn.execute('''
@@ -93,7 +94,7 @@ def get_periods() -> list[str]:
 
 
 @st.cache_data(ttl=3600)
-def get_work_groups() -> list[str]:
+def get_work_groups() -> List[str]:
     """Возвращает список всех рабочих групп из справочника."""
     conn = get_connection()
     rows = conn.execute('''
