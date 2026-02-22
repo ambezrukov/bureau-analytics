@@ -112,8 +112,7 @@ def render_sidebar(key_prefix: str = '') -> dict:
     Возвращает словарь с выбранными значениями фильтров.
     """
     with st.sidebar:
-        st.image("https://img.icons8.com/color/96/scales.png", width=60)
-        st.title("Аналитика бюро")
+        st.title("⚖️ Аналитика бюро")
         st.divider()
 
         periods = get_periods()
