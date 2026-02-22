@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+.env
+*.db
+# bureau_data.sqlite НЕ игнорируем — он нужен для Streamlit Cloud
+# Если хотите исключить большой файл — раскомментируйте:
+# bureau_data.sqlite
