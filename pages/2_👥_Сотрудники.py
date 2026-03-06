@@ -11,8 +11,6 @@ import pandas as pd
 from utils.data import render_sidebar, get_filtered_data, get_periods, load_time_entries
 from utils.charts import horizontal_bar_realization
 
-st.set_page_config(page_title="Сотрудники | Аналитика бюро", page_icon="👥", layout="wide")
-
 filters = render_sidebar(key_prefix='staff_')
 
 st.title("👥 Сотрудники")
