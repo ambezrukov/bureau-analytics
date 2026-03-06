@@ -12,8 +12,6 @@ import pandas as pd
 from utils.data import render_sidebar, get_filtered_data, get_periods
 from utils.charts import line_chart_hours_realization, bar_chart_project_types
 
-st.set_page_config(page_title="Обзор | Аналитика бюро", page_icon="📊", layout="wide")
-
 try:
     filters = render_sidebar(key_prefix='obzor_')
 except Exception as e:
@@ -100,7 +98,6 @@ try:
     # ── Линейный график: динамика по месяцам ──────────────────────────────────
     st.subheader("Динамика по месяцам")
 
-    # Исправлено: вместо лямбды в agg — отдельный расчёт коммерческих часов
     df_total = df.groupby('period').agg(
         total_hours=('duration', 'sum'),
         billable_hours=('billable_hours', 'sum'),
