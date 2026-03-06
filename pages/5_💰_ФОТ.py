@@ -9,8 +9,6 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))
 import streamlit as st
 from utils.data import render_sidebar
 
-st.set_page_config(page_title="ФОТ | Аналитика бюро", page_icon="💰", layout="wide")
-
 render_sidebar(key_prefix='fot_')
 
 st.title("💰 ФОТ — Фонд оплаты труда")
