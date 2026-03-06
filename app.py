@@ -15,11 +15,11 @@ st.set_page_config(
 )
 
 pg = st.navigation([
-    st.Page("pages/0_Главная.py",       title="🏠 Главная",    default=True),
-    st.Page("pages/1_📊_Обзор.py",      title="📊 Обзор"),
-    st.Page("pages/2_👥_Сотрудники.py", title="👥 Сотрудники"),
-    st.Page("pages/3_📈_Динамика.py",   title="📈 Динамика"),
-    st.Page("pages/4_📁_Проекты.py",    title="📁 Проекты"),
-    st.Page("pages/5_💰_ФОТ.py",        title="💰 ФОТ"),
+    st.Page("pages/0_Главная.py",       title="Главная",    icon="🏠", default=True),
+    st.Page("pages/1_📊_Обзор.py",      title="Обзор"),
+    st.Page("pages/2_👥_Сотрудники.py", title="Сотрудники"),
+    st.Page("pages/3_📈_Динамика.py",   title="Динамика"),
+    st.Page("pages/4_📁_Проекты.py",    title="Проекты"),
+    st.Page("pages/5_💰_ФОТ.py",        title="ФОТ"),
 ])
 pg.run()
