@@ -11,8 +11,6 @@ import pandas as pd
 from utils.data import render_sidebar, get_filtered_data
 from utils.charts import bar_top_projects
 
-st.set_page_config(page_title="Проекты | Аналитика бюро", page_icon="📁", layout="wide")
-
 filters = render_sidebar(key_prefix='proj_')
 
 st.title("📁 Проекты")
