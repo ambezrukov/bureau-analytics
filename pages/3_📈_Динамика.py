@@ -11,8 +11,6 @@ import pandas as pd
 from utils.data import render_sidebar, get_filtered_data, get_periods
 from utils.charts import line_chart_dynamic
 
-st.set_page_config(page_title="Динамика | Аналитика бюро", page_icon="📈", layout="wide")
-
 filters = render_sidebar(key_prefix='dyn_')
 
 st.title("📈 Динамика")
@@ -83,13 +81,11 @@ def compute_metrics(data: pd.DataFrame, group_cols: list) -> pd.DataFrame:
 
     result = pd.concat([total, commercial, billable, amount_rub], axis=1).reset_index()
 
-    # Реализация
     result['realization_pct'] = (
         result.get('billable_hours', pd.Series(dtype=float)) /
         result.get('commercial_hours', pd.Series(dtype=float)).replace(0, float('nan')) * 100
     ).round(1)
 
-    # Сортируем по периодам
     result['_order'] = result['period'].apply(
         lambda p: all_periods.index(p) if p in all_periods else 0
     )
@@ -105,7 +101,6 @@ if breakdown == "Бюро (итог)":
     title = f"{metric_label} — бюро"
 
 elif breakdown == "По сотрудникам":
-    # Ограничиваем до топ-10 по метрике
     top_employees = df.groupby('employee')['duration'].sum().nlargest(10).index.tolist()
     df_top = df[df['employee'].isin(top_employees)]
     df_grouped = compute_metrics(df_top, ['period', 'employee'])
@@ -118,12 +113,10 @@ else:  # По типам проектов
     color_col = 'project_type'
     title = f"{metric_label} — по типам проектов"
 
-# Строим график
 if metric_col in df_grouped.columns:
     fig = line_chart_dynamic(df_grouped, metric_col, metric_label, color_col, title)
     st.plotly_chart(fig, use_container_width=True)
 
-    # Таблица под графиком
     with st.expander("Данные таблицы"):
         display_cols = ['period']
         if color_col:
